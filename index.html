@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>A Note for Sanu</title>
+    <style>
+        body { 
+            background: linear-gradient(135deg, #0a0a0c 0%, #1a1a2e 100%); 
+            color: #dcdcdc; font-family: 'Georgia', serif; 
+            display: flex; justify-content: center; align-items: center; 
+            height: 100vh; margin: 0; 
+        }
+        .page { 
+            display: none; text-align: center; width: 85%; max-width: 400px; padding: 40px; 
+            background: rgba(255, 255, 255, 0.03); border: 1px solid rgba(255, 255, 255, 0.08); 
+            border-radius: 20px; box-shadow: 0 10px 30px rgba(0,0,0,0.5); 
+        }
+        .page.active { display: block; animation: fadeIn 0.5s; }
+        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+        h1 { color: #ffffff; font-size: 1.6rem; margin-bottom: 20px; font-weight: 400; }
+        p { line-height: 1.8; color: #b0b0b0; margin-bottom: 30px; }
+        .btn-group { display: flex; justify-content: center; gap: 10px; }
+        .btn { 
+            background: transparent; border: 1px solid #444; color: #fff; 
+            padding: 10px 20px; border-radius: 30px; cursor: pointer; 
+            transition: 0.3s; font-size: 0.85rem;
+        }
+        .btn:hover { background: #fff; color: #000; border-color: #fff; }
+        #langToggle {
+            position: absolute; top: 20px; right: 20px;
+            background: rgba(255, 255, 255, 0.1); color: #fff;
+            border: none; padding: 8px 15px; border-radius: 20px; cursor: pointer; font-size: 0.8rem;
+        }
+        input { padding: 10px; border-radius: 5px; border: none; margin-bottom: 10px; width: 80%; }
+    </style>
+</head>
+<body>
+
+    <button id="langToggle" onclick="toggleLanguage()">සිංහල / EN</button>
+
+    <!-- Password Page -->
+    <div class="page active" id="passwordPage">
+        <h1 class="en">Welcome</h1><h1 class="si" style="display:none">ආයුබෝවන්</h1>
+        <p class="en">Please enter the secret password to open this note.</p>
+        <p class="si" style="display:none">මෙම පණිවිඩය විවෘත කිරීමට රහස් මුරපදය ඇතුළත් කරන්න.</p>
+        <input type="password" id="passwordInput" class="en" placeholder="Enter password...">
+        <input type="password" id="passwordInputSi" class="si" placeholder="මුරපදය ඇතුළත් කරන්න..." style="display:none">
+        <br>
+        <button class="btn" onclick="checkPassword()">Unlock / විවෘත කරන්න</button>
+    </div>
+
+    <!-- Page 1 -->
+    <div class="page" id="p1">
+        <h1 class="en">For Sanu</h1><h1 class="si" style="display:none">සනු වෙනුවෙන්</h1>
+        <p class="en">I know that words aren't enough to fix the past. I’ve been doing a lot of thinking about how I hurt you, and I wanted to put this together to show you that you're still on my mind.</p>
+        <p class="si" style="display:none">අතීතයේ සිදු වූ දේවල් හදන්න වචන ප්‍රමාණවත් නැති බව මම දන්නවා. මම ඔයාට කොහොමද රිදවුවේ කියලා මම ගොඩක් හිතුවා. ඔයා තාමත් මගේ හිතේ ඉන්නා බව ඔයාට පෙන්නන්න මම මේක නිර්මාණය කළා.</p>
+        <button class="btn" onclick="next(2)">Continue / දිගටම</button>
+    </div>
+
+    <!-- Page 2 -->
+    <div class="page" id="p2">
+        <h1 class="en">I'm learning</h1><h1 class="si" style="display:none">මම ඉගෙන ගනිමින් ඉන්නවා</h1>
+        <p class="en">I’m working hard to be better. I want to be someone you can rely on, someone who makes you feel safe and heard.</p>
+        <p class="si" style="display:none">මම වඩා හොඳ කෙනෙක් වෙන්න ගොඩක් උත්සාහ කරනවා. ඔයාට විශ්වාස තියන්න පුළුවන්, ඔයාගේ අදහස්වලට ඇහුම්කන් දෙන කෙනෙක් වෙන්න මට අවශ්‍යයි.</p>
+        <div class="btn-group">
+            <button class="btn" onclick="next(1)">Back / ආපසු</button>
+            <button class="btn" onclick="next(3)">Next / ඊළඟ</button>
+        </div>
+    </div>
+
+    <!-- Page 3 -->
+    <div class="page" id="p3">
+        <h1 class="en">My commitment</h1><h1 class="si" style="display:none">මගේ පොරොන්දුව</h1>
+        <p class="en">I promise to listen more, to understand better, and to never take your presence for granted. Distance is hard, but I am committed to bridging it with honesty and patience.</p>
+        <p class="si" style="display:none">තව තවත් ඔයාට ඇහුම්කන් දෙන්නත්, ඔයාව හොඳින් තේරුම් ගන්නත්, ඔයාගේ අගය කවදාවත් අමතක නොකර ඉන්නත් මම පොරොන්දු වෙනවා. දුරස්ථ සම්බන්ධතාවයක් අමාරු වුණත්, අවංකකමින් හා ඉවසීමෙන් ඒ දුර මකා දාන්න මම කැපවෙනවා.</p>
+        <div class="btn-group">
+            <button class="btn" onclick="next(2)">Back / ආපසු</button>
+            <button class="btn" onclick="next(4)">Final / අවසාන</button>
+        </div>
+    </div>
+
+    <!-- Page 4 -->
+    <div class="page" id="p4">
+        <h1 class="en">Thank you, Sanu</h1><h1 class="si" style="display:none">ස්තූතියි සනු</h1>
+        <p class="en">Thank you for reading this. I don't expect everything to change overnight, but I hope you know how much I care about you.</p>
+        <p class="si" style="display:none">මේක කියවන්න ඔයා කාලය වෙන් කළාට ගොඩක් ස්තූතියි. හැමදේම එක රැයකින් වෙනස් වෙයි කියලා මම බලාපොරොත්තු වෙන්නේ නැහැ, ඒත් මම ඔයා ගැන කොච්චර හිතනවද කියලා ඔයාට දැනෙයි කියලා මම හිතනවා.</p>
+        <div class="btn-group">
+            <button class="btn" onclick="next(3)">Back / ආපසු</button>
+            <button class="btn" onclick="openWhatsApp()">WhatsApp</button>
+        </div>
+    </div>
+
+    <script>
+        let currentLang = 'en';
+        
+        function checkPassword() {
+            // Checks value from whichever input is currently visible
+            const pass = currentLang === 'en' ? document.getElementById('passwordInput').value : document.getElementById('passwordInputSi').value;
+            if (pass === "0209") { 
+                document.getElementById('passwordPage').classList.remove('active');
+                document.getElementById('p1').classList.add('active');
+            } else {
+                alert(currentLang === 'en' ? "Incorrect password." : "මුරපදය වැරදියි.");
+            }
+        }
+
+        function next(id) {
+            document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+            document.getElementById('p' + id).classList.add('active');
+        }
+        
+        function toggleLanguage() {
+            currentLang = currentLang === 'en' ? 'si' : 'en';
+            document.querySelectorAll('.en').forEach(el => el.style.display = currentLang === 'en' ? 'block' : 'none');
+            document.querySelectorAll('.si').forEach(el => el.style.display = currentLang === 'si' ? 'block' : 'none');
+        }
+        
+        function openWhatsApp() {
+            window.location.href = "https://wa.me/94702026596?text=" + encodeURIComponent("Hi Sanu, I read your note and I'm ready to talk.");
+        }
+    </script>
+</body>
+</html>
